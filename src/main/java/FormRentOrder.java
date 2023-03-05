@@ -43,7 +43,9 @@ public class FormRentOrder {
     //Кнопка Да при подтерждении заказа
     private final By YES_BUTTON = By.xpath("//*[@id=\"root\"]/div/div[2]/div[5]/div[2]/button[2]");
     //Окно с номером заказа
-    private final By ORDER_WINDOW = By.className("Order_Modal__YZ-d3");
+    private final By ORDER_WINDOW = By.className("Order_ModalHeader__3FDaJ");
+    //Кнопка посмотреть статус
+    private final By ORDER_BUTTON_STATUS = By.className("Button_Middle__1CSJM");
 
 
     //Метод заполняет поле Имя
@@ -131,7 +133,11 @@ public class FormRentOrder {
 
     //Метод проверяет, что окно подтверждения заказа отобразилось
     public boolean isWindowAcceptDisabled() {
-        driver.findElement(ORDER_WINDOW).isDisplayed();
-        return true;
+        return driver.findElement(ORDER_WINDOW).isDisplayed();
+
+    }
+    //Метод проверяет, если в окне подверждения заказа кнопка Посмотреть статус, если ее нет, то тест падает
+    public void clickButtonOrderStatus() {
+        driver.findElement(ORDER_BUTTON_STATUS).click();
     }
 }
